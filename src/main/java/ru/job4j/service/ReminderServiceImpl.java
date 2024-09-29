@@ -2,10 +2,11 @@ package ru.job4j.service;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ReminderServiceImpl implements ReminderService {
+public class ReminderServiceImpl implements ReminderService, BeanNameAware {
 
     /**
      * Конструктор класса.
@@ -14,6 +15,15 @@ public class ReminderServiceImpl implements ReminderService {
         System.out.println(
                 "invoke constructor " + ReminderServiceImpl.class
         );
+    }
+
+    /**
+     * Интеграция со spring'ом для получения присвоенного имени бина.
+     * @param name имя бина.
+     */
+    @Override
+    public void setBeanName(final String name) {
+        System.out.println("ReminderServiceImpl(bean name): " + name);
     }
 
     /**
