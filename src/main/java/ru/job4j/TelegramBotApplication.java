@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
-import ru.job4j.config.AppConfig;
 import ru.job4j.service.TgRemoteService;
 
 @SpringBootApplication
@@ -23,10 +22,12 @@ public class TelegramBotApplication {
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext applicationContext) {
+    public CommandLineRunner commandLineRunner(
+            ApplicationContext applicationContext
+    ) {
         return args -> {
-            TgRemoteService tgService = applicationContext.getBean(TgRemoteService.class);
-            TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
+            var tgService = applicationContext.getBean(TgRemoteService.class);
+            var telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
             try {
                 telegramBotsApi.registerBot(tgService);
                 System.out.println("Бот успешно зарегестрирован!");
