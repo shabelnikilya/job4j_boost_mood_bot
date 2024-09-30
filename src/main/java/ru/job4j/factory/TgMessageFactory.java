@@ -1,4 +1,4 @@
-package ru.job4j.message;
+package ru.job4j.factory;
 
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;

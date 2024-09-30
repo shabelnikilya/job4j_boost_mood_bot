@@ -1,4 +1,4 @@
 /**
  * Пакет содержит классы по работе с сообщениями тг.
  */
-package ru.job4j.message;
+package ru.job4j.factory;

@@ -1,7 +1,7 @@
 package ru.job4j.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.job4j.message.TgMessageFactory;
+import ru.job4j.factory.TgMessageFactory;
 import ru.job4j.model.Button;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
