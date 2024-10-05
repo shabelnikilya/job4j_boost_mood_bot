@@ -2,20 +2,27 @@ package ru.job4j.service;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class AchievementServiceImpl
         implements AchievementService, BeanNameAware {
+    /**
+     * Постоянная для логирования.
+     */
+    private static final Logger LOG = LoggerFactory.getLogger(
+            AchievementServiceImpl.class
+    );
 
     /**
      * Конструктор класса.
      */
     public AchievementServiceImpl() {
-        System.out.println(
-                "invoke constructor " + AchievementServiceImpl.class
-        );
+        LOG.info("invoke constructor {}", AchievementServiceImpl.class);
     }
 
     /**
@@ -24,7 +31,7 @@ public class AchievementServiceImpl
      */
     @Override
     public void setBeanName(final String name) {
-        System.out.println("AchievementServiceImpl(bean name): " + name);
+        LOG.info("AchievementServiceImpl(bean name):  {}", name);
     }
 
     /**
@@ -32,7 +39,7 @@ public class AchievementServiceImpl
      */
     @PostConstruct
     public void init() {
-        System.out.println("init method " + AchievementServiceImpl.class);
+        LOG.info("init method {}", AchievementServiceImpl.class);
     }
 
     /**
@@ -40,6 +47,6 @@ public class AchievementServiceImpl
      */
     @PreDestroy
     public void destroy() {
-        System.out.println("destroy method " + AchievementServiceImpl.class);
+        LOG.info("destroy method {}", AchievementServiceImpl.class);
     }
 }

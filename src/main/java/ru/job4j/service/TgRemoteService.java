@@ -1,6 +1,9 @@
 package ru.job4j.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.job4j.exception.BoostMoodBotException;
 import ru.job4j.factory.TgMessageFactory;
 import ru.job4j.model.Button;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,6 +19,12 @@ import java.util.stream.Stream;
 
 @Service
 public class TgRemoteService extends TelegramLongPollingBot {
+    /**
+     * Постоянная для логирования.
+     */
+    private static final Logger LOG = LoggerFactory.getLogger(
+            TgRemoteService.class
+    );
 
     /**
      * Имя бота.
@@ -107,7 +116,12 @@ public class TgRemoteService extends TelegramLongPollingBot {
         try {
             execute(message);
         } catch (TelegramApiException e) {
-            e.printStackTrace();
+            LOG.error(
+                    "Error when sending a message to telegram: {}", message, e
+            );
+            throw new BoostMoodBotException(
+                    "Error when sending a message to telegram!", e
+            );
         }
     }
 }

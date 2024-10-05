@@ -2,18 +2,26 @@ package ru.job4j.service;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ReminderServiceImpl implements ReminderService, BeanNameAware {
+    /**
+     * Постоянная для логирования.
+     */
+    private static final Logger LOG = LoggerFactory.getLogger(
+            ReminderServiceImpl.class
+    );
 
     /**
      * Конструктор класса.
      */
     public ReminderServiceImpl() {
-        System.out.println(
-                "invoke constructor " + ReminderServiceImpl.class
+        LOG.info(
+                "invoke constructor {}", ReminderServiceImpl.class
         );
     }
 
@@ -23,7 +31,7 @@ public class ReminderServiceImpl implements ReminderService, BeanNameAware {
      */
     @Override
     public void setBeanName(final String name) {
-        System.out.println("ReminderServiceImpl(bean name): " + name);
+        LOG.info("ReminderServiceImpl(bean name): {}", name);
     }
 
     /**
@@ -31,7 +39,7 @@ public class ReminderServiceImpl implements ReminderService, BeanNameAware {
      */
     @PostConstruct
     public void init() {
-        System.out.println("init method " + ReminderServiceImpl.class);
+        LOG.info("init method {}", ReminderServiceImpl.class);
     }
 
     /**
@@ -39,6 +47,6 @@ public class ReminderServiceImpl implements ReminderService, BeanNameAware {
      */
     @PreDestroy
     public void destroy() {
-        System.out.println("destroy method " + ReminderServiceImpl.class);
+        LOG.info("destroy method {}", ReminderServiceImpl.class);
     }
 }

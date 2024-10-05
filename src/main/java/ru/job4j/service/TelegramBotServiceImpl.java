@@ -2,19 +2,27 @@ package ru.job4j.service;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TelegramBotServiceImpl
         implements TelegramBotService, BeanNameAware {
+    /**
+     * Постоянная для логирования.
+     */
+    private static final Logger LOG = LoggerFactory.getLogger(
+            TelegramBotServiceImpl.class
+    );
 
     /**
      * Конструктор класса.
      */
     public TelegramBotServiceImpl() {
-        System.out.println(
-                "invoke constructor " + TelegramBotServiceImpl.class
+        LOG.info(
+                "invoke constructor {}", TelegramBotServiceImpl.class
         );
     }
 
@@ -24,7 +32,7 @@ public class TelegramBotServiceImpl
      */
     @Override
     public void setBeanName(final String name) {
-        System.out.println("TelegramBotServiceImpl(bean name): " + name);
+        LOG.info("TelegramBotServiceImpl(bean name): {}", name);
     }
 
     /**
@@ -32,7 +40,7 @@ public class TelegramBotServiceImpl
      */
     @PostConstruct
     public void init() {
-        System.out.println("init method " + TelegramBotServiceImpl.class);
+        LOG.info("init method {}", TelegramBotServiceImpl.class);
     }
 
     /**
@@ -40,6 +48,6 @@ public class TelegramBotServiceImpl
      */
     @PreDestroy
     public void destroy() {
-        System.out.println("destroy method " + TelegramBotServiceImpl.class);
+        LOG.info("destroy method {}", TelegramBotServiceImpl.class);
     }
 }

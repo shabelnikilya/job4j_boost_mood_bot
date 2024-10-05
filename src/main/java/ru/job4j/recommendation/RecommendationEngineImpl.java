@@ -2,17 +2,25 @@ package ru.job4j.recommendation;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RecommendationEngineImpl implements RecommendationEngine {
+    /**
+     * Постоянная для логирования.
+     */
+    private static final Logger LOG = LoggerFactory.getLogger(
+            RecommendationEngineImpl.class
+    );
 
     /**
      * Конструктор класса.
      */
     public RecommendationEngineImpl() {
-        System.out.println(
-                "invoke constructor " + RecommendationEngineImpl.class
+        LOG.info(
+                "invoke constructor {}", RecommendationEngineImpl.class
         );
     }
 
@@ -21,7 +29,7 @@ public class RecommendationEngineImpl implements RecommendationEngine {
      */
     @PostConstruct
     public void init() {
-        System.out.println("init method " + RecommendationEngineImpl.class);
+        LOG.info("init method {}", RecommendationEngineImpl.class);
     }
 
     /**
@@ -29,6 +37,6 @@ public class RecommendationEngineImpl implements RecommendationEngine {
      */
     @PreDestroy
     public void destroy() {
-        System.out.println("destroy method " + RecommendationEngineImpl.class);
+        LOG.info("destroy method {}", RecommendationEngineImpl.class);
     }
 }

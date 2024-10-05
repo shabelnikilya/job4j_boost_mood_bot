@@ -2,17 +2,25 @@ package ru.job4j.handler;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BotCommandHandlerImpl implements BotCommandHandler {
+    /**
+     * Постоянная для логирования.
+     */
+    private static final Logger LOG = LoggerFactory.getLogger(
+            BotCommandHandlerImpl.class
+    );
 
     /**
      * Конструктор класса.
      */
     public BotCommandHandlerImpl() {
-        System.out.println(
-                "invoke constructor " + BotCommandHandlerImpl.class
+        LOG.info(
+                "invoke constructor {}", BotCommandHandlerImpl.class
         );
     }
 
@@ -21,7 +29,7 @@ public class BotCommandHandlerImpl implements BotCommandHandler {
      */
     @PostConstruct
     public void init() {
-        System.out.println("init method " + BotCommandHandlerImpl.class);
+        LOG.info("init method {}", BotCommandHandlerImpl.class);
     }
 
     /**
@@ -29,6 +37,6 @@ public class BotCommandHandlerImpl implements BotCommandHandler {
      */
     @PreDestroy
     public void destroy() {
-        System.out.println("destroy method " + BotCommandHandlerImpl.class);
+        LOG.info("destroy method {}", BotCommandHandlerImpl.class);
     }
 }

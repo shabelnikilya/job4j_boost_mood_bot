@@ -2,17 +2,25 @@ package ru.job4j.service;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MoodServiceImpl implements MoodService, BeanNameAware {
+    /**
+     * Постоянная для логирования.
+     */
+    private static final Logger LOG = LoggerFactory.getLogger(
+            MoodServiceImpl.class
+    );
 
     /**
      * Конструктор класса.
      */
     public MoodServiceImpl() {
-        System.out.println("invoke constructor " + MoodServiceImpl.class);
+        LOG.info("invoke constructor {}", MoodServiceImpl.class);
     }
 
     /**
@@ -21,7 +29,7 @@ public class MoodServiceImpl implements MoodService, BeanNameAware {
      */
     @Override
     public void setBeanName(final String name) {
-        System.out.println("MoodServiceImpl(bean name): " + name);
+        LOG.info("MoodServiceImpl(bean name): {}", name);
     }
 
     /**
@@ -29,7 +37,7 @@ public class MoodServiceImpl implements MoodService, BeanNameAware {
      */
     @PostConstruct
     public void init() {
-        System.out.println("init method " + MoodServiceImpl.class);
+        LOG.info("init method {}", MoodServiceImpl.class);
     }
 
     /**
@@ -37,6 +45,6 @@ public class MoodServiceImpl implements MoodService, BeanNameAware {
      */
     @PreDestroy
     public void destroy() {
-        System.out.println("destroy method " + MoodServiceImpl.class);
+        LOG.info("destroy method {}", MoodServiceImpl.class);
     }
 }

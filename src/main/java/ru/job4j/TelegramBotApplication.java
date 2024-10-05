@@ -1,5 +1,7 @@
 package ru.job4j;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +14,12 @@ import ru.job4j.service.TgRemoteService;
 
 @SpringBootApplication
 public class TelegramBotApplication {
+    /**
+     * Постоянная для логирования.
+     */
+    private static final Logger LOG = LoggerFactory.getLogger(
+            TelegramBotApplication.class
+    );
 
     /**
      * Точка старта приложения.
@@ -21,6 +29,12 @@ public class TelegramBotApplication {
         SpringApplication.run(TelegramBotApplication.class);
     }
 
+    /**
+     * Метод вызываемый после поднятия контекста.
+     *
+     * @param applicationContext spring контекст.
+     * @return реализация функц. yитерфейса.
+     */
     @Bean
     public CommandLineRunner commandLineRunner(
             ApplicationContext applicationContext
@@ -30,7 +44,7 @@ public class TelegramBotApplication {
             var telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
             try {
                 telegramBotsApi.registerBot(tgService);
-                System.out.println("Бот успешно зарегестрирован!");
+                LOG.info("Бот успешно зарегестрирован!");
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
