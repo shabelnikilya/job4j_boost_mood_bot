@@ -2,3 +2,7 @@ telegram:
   bot:
     name: "MoodBot"
     token: "8096440732:AAEPRlC7lJ11-llgi_6GQz3sh_t5J2Od1rk"
+
+spring:
+  profiles:
+    active: test
