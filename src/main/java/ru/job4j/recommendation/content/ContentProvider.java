@@ -1,15 +1,16 @@
-package ru.job4j.recommendation;
+package ru.job4j.recommendation.content;
 
 import ru.job4j.model.Content;
 
-public interface RecommendationEngine {
+public interface ContentProvider {
 
     /**
-     * Получение рекомендаций.
+     * Получение контента по настроению.
      *
      * @param chatId идентификатор чата.
      * @param moodId идентификатор настроения.
      * @return контент.
      */
-    Content recommendFor(long chatId, long moodId);
+    Content byMood(long chatId, long moodId);
+
 }
