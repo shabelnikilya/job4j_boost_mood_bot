@@ -44,9 +44,13 @@ public class UserFakeRepositoryImpl implements UserRepository {
      * Сохранения пользователя.
      *
      * @param user данные пользователя.
+     * @return пользователь.
      */
     @Override
-    public void save(User user) {
-        userMap.putIfAbsent(user.clientId(), user);
+    public User save(User user) {
+        long userId = System.currentTimeMillis();
+        user.setId(userId);
+        userMap.putIfAbsent(user.getClientId(), user);
+        return user;
     }
 }

@@ -5,6 +5,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import ru.job4j.model.Button;
+import ru.job4j.model.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -63,6 +64,17 @@ public class TgMessageFactory {
      */
     public SendMessage sendTextByChatIdAndData(long chatId, String data) {
         return new SendMessage(String.valueOf(chatId), MOOD_RESP.get(data));
+    }
+
+    /**
+     * Отправка текста для крайних случаев!
+     *
+     * @param chatId идентификатор чата.
+     * @param text текст.
+     * @return обертка текста для тг.
+     */
+    public SendMessage sendTextByChatId(long chatId, Text text) {
+        return new SendMessage(String.valueOf(chatId), text.getText());
     }
 
     /**

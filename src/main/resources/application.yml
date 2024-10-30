@@ -3,6 +3,9 @@ telegram:
     name: "MoodBot"
     token: "8096440732:AAEPRlC7lJ11-llgi_6GQz3sh_t5J2Od1rk"
 
+remind:
+  period: 5000
+
 spring:
   profiles:
     active: test

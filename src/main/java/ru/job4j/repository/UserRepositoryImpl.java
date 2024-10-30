@@ -1,13 +1,16 @@
 package ru.job4j.repository;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import ru.job4j.model.User;
+import ru.job4j.profile.Profiles;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
+@Profile(Profiles.NOT_TEST_PROFILE)
 public class UserRepositoryImpl implements UserRepository {
 
     /**
@@ -35,8 +38,10 @@ public class UserRepositoryImpl implements UserRepository {
      * Сохранение пользователя.
      *
      * @param user данные пользователя.
+     * @return пользователь.
      */
     @Override
-    public void save(User user) {
+    public User save(User user) {
+        throw new UnsupportedOperationException("Метод не реализован!");
     }
 }

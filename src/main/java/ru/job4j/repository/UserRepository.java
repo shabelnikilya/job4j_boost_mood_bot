@@ -29,6 +29,7 @@ public interface UserRepository {
      * Сохранение пользовательских данных.
      *
      * @param user данные пользователя.
+     * @return пользователь.
      */
-    void save(User user);
+    User save(User user);
 }
