@@ -10,7 +10,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.job4j.factory.TgMessageFactory;
 import ru.job4j.model.Button;
-import ru.job4j.model.User;
+import ru.job4j.entity.User;
 import ru.job4j.service.UserService;
 import java.util.Map;
 import java.util.stream.Collectors;

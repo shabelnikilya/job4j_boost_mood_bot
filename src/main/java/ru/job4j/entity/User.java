@@ -1,21 +1,35 @@
-package ru.job4j.model;
+package ru.job4j.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "mb_user")
 public class User {
 
     /**
      * Внутренний идентификатор пользователя.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     /**
      * Идентификатор клиента.
      */
+    @Column(name = "client_id")
     private long clientId;
 
     /**
      * Идентификатор чатаю
      */
+    @Column(name = "chat_id")
     private long chatId;
+
+    /**
+     * Конструктор класса без аргументов.
+     */
+    public User() {
+    }
 
     /**
      * Конструктор класса.
@@ -61,6 +75,24 @@ public class User {
      */
     public long getChatId() {
         return chatId;
+    }
+
+    /**
+     * Метод для установления идентификатора клиента.
+     *
+     * @param clientId идентификатор клиента.
+     */
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
+    }
+
+    /**
+     * Метод установления идентификатора чата.
+     *
+     * @param chatId идентификатор чата.
+     */
+    public void setChatId(long chatId) {
+        this.chatId = chatId;
     }
 
     /**

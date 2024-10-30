@@ -2,8 +2,10 @@ package ru.job4j.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.job4j.model.User;
+import ru.job4j.entity.User;
 import ru.job4j.repository.UserRepository;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,6 +59,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public List<User> findAll() {
-        return repository.findAll();
+        return (List<User>) repository.findAll();
     }
 }

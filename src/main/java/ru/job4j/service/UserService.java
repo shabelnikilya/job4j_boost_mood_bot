@@ -1,6 +1,6 @@
 package ru.job4j.service;
 
-import ru.job4j.model.User;
+import ru.job4j.entity.User;
 
 import java.util.List;
 import java.util.Optional;
